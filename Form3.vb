@@ -2,9 +2,9 @@
 
     Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Me.Text = "Iraqi Airways Flight History"
+        Me.Text = "Iraqi Airways Available Flight"
         Me.Size = New Size(1300, 550)
-
+        Me.FormBorderStyle = FormBorderStyle.FixedSingle
 
         Dim dataGridView = New DataGridView()
         dataGridView.Name = "dataGridView"
@@ -20,7 +20,6 @@
         dataGridView.Columns.Add("ArrivalAirport", "Arrival Airport")
         dataGridView.Columns.Add("FlightDuration", "Flight Duration")
         Me.Controls.Add(dataGridView)
-
 
         dataGridView.Rows.Add("IA123", "2025-04-10 08:00", "2025-04-10 11:00", "On Time", "Airbus A320", "Baghdad International", "Dubai International", "3h 0m")
         dataGridView.Rows.Add("IA124", "2025-04-10 14:00", "2025-04-10 17:00", "Delayed", "Boeing 737", "Baghdad International", "Cairo International", "3h 0m")

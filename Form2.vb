@@ -3,9 +3,8 @@
         Me.Text = "Iraq Airways Booking"
         Me.Width = 550
         Me.Height = 550
-        Me.StartPosition = FormStartPosition.CenterScreen
         Me.FormBorderStyle = FormBorderStyle.FixedSingle
-        Me.MaximizeBox = False
+
 
         Dim lblHeading As New Label()
         lblHeading.Text = "IRAQ AIRWAYS BOOKING"
