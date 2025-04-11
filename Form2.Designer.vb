@@ -22,6 +22,7 @@ Partial Class Form2
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form2))
         SuspendLayout()
         ' 
         ' Form2
@@ -29,6 +30,7 @@ Partial Class Form2
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
+        Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Name = "Form2"
         Text = "Form2"
         ResumeLayout(False)

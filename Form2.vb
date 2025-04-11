@@ -245,8 +245,15 @@
             txtSeat.Focus()
             Return
         End If
-
+        Dim bookingRef As String = "IA" & New Random().Next(100000, 999999).ToString()
         MessageBox.Show("Booking confirmed for " & txtName.Text & " on " & cboFlights.SelectedItem.ToString(), "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        ShowBookingReceipt(bookingRef,
+                     cboFlights.SelectedItem.ToString(),
+                     dtpDate.Value.ToShortDateString(),
+                     txtName.Text.Trim(),
+                     cboClass.SelectedItem.ToString(),
+                     txtSeat.Text.Trim(),
+                     txtSpecialRequests.Text.Trim())
     End Sub
 
     Private Sub btnClear_Click(sender As Object, e As EventArgs)
@@ -261,6 +268,71 @@
         DirectCast(grpSeat.Controls("cboClass"), ComboBox).SelectedIndex = 0
         DirectCast(grpSeat.Controls("txtSeat"), TextBox).Clear()
         DirectCast(Me.Controls("txtSpecialRequests"), TextBox).Clear()
+
+    End Sub
+
+    Private Sub ShowBookingReceipt(bookingRef As String, flight As String, travelDate As String,
+                                  name As String, seatClass As String, seat As String,
+                                  specialRequests As String)
+
+        Dim frmReceipt As New Form()
+        frmReceipt.Text = "Booking Receipt"
+        frmReceipt.Width = 400
+        frmReceipt.Height = 400
+        frmReceipt.StartPosition = FormStartPosition.CenterParent
+        frmReceipt.FormBorderStyle = FormBorderStyle.FixedDialog
+        frmReceipt.MaximizeBox = False
+        frmReceipt.MinimizeBox = False
+
+
+        Dim lblReceiptTitle As New Label()
+        lblReceiptTitle.Text = "IRAQ AIRWAYS BOOKING RECEIPT"
+        lblReceiptTitle.Font = New Font("Arial", 12, FontStyle.Bold)
+        lblReceiptTitle.TextAlign = ContentAlignment.MiddleCenter
+        lblReceiptTitle.Location = New Point(0, 20)
+        lblReceiptTitle.Width = frmReceipt.Width
+        lblReceiptTitle.Height = 30
+        frmReceipt.Controls.Add(lblReceiptTitle)
+
+
+        Dim lblDetails As New Label()
+        lblDetails.Text = "Booking Reference: " & bookingRef & vbCrLf & vbCrLf &
+                         "Flight: " & flight & vbCrLf &
+                         "Date: " & travelDate & vbCrLf &
+                         "Passenger: " & name & vbCrLf &
+                         "Class: " & seatClass & vbCrLf &
+                         "Seat: " & seat
+
+        If specialRequests.Trim() <> "" Then
+            lblDetails.Text &= vbCrLf & vbCrLf & "Special Requests: " & specialRequests
+        End If
+
+        lblDetails.Location = New Point(30, 70)
+        lblDetails.Width = frmReceipt.Width - 60
+        lblDetails.Height = 200
+        frmReceipt.Controls.Add(lblDetails)
+
+
+        Dim lblThankYou As New Label()
+        lblThankYou.Text = "Thank you for choosing Iraq Airways!"
+        lblThankYou.Font = New Font("Arial", 10, FontStyle.Italic)
+        lblThankYou.TextAlign = ContentAlignment.MiddleCenter
+        lblThankYou.Location = New Point(0, 280)
+        lblThankYou.Width = frmReceipt.Width
+        lblThankYou.Height = 30
+        frmReceipt.Controls.Add(lblThankYou)
+
+
+        Dim btnClose As New Button()
+        btnClose.Text = "Close"
+        btnClose.Location = New Point((frmReceipt.Width - 100) / 2, 320)
+        btnClose.Width = 100
+        btnClose.Height = 30
+        frmReceipt.Controls.Add(btnClose)
+        AddHandler btnClose.Click, Sub(sender, e) frmReceipt.Close()
+
+
+        frmReceipt.ShowDialog()
     End Sub
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs)
@@ -275,3 +347,4 @@
         End If
     End Function
 End Class
+
