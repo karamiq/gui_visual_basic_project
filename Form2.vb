@@ -1,20 +1,20 @@
 ﻿Public Class Form2
     ' Form Load - Sets up the entire UI
     Private Sub frmBooking_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Try
-            ' Form properties
-            Me.Text = "VB Airways Booking"
-            Me.Width = 550
+
+        ' Form properties
+        Me.Text = "Iraq Airways Booking"
+        Me.Width = 550
             Me.Height = 550
             Me.StartPosition = FormStartPosition.CenterScreen
             Me.FormBorderStyle = FormBorderStyle.FixedSingle
             Me.MaximizeBox = False
 
 
-            ' ---------- HEADING ----------
-            Dim lblHeading As New Label()
-            lblHeading.Text = "VB AIRWAYS BOOKING"
-            lblHeading.Font = New Font("Arial", 16, FontStyle.Bold)
+        ' ---------- HEADING ----------
+        Dim lblHeading As New Label()
+        lblHeading.Text = "IRAQ AIRWAYS AIRWAYS BOOKING"
+        lblHeading.Font = New Font("Arial", 16, FontStyle.Bold)
             lblHeading.TextAlign = ContentAlignment.MiddleCenter
             lblHeading.Location = New Point(0, 10)
             lblHeading.Width = Me.Width
@@ -32,14 +32,14 @@
             Dim cboFlights As New ComboBox()
             cboFlights.Name = "cboFlights"
             cboFlights.Location = New Point(150, 60)
-            cboFlights.Width = 350
-            cboFlights.DropDownStyle = ComboBoxStyle.DropDownList
-            cboFlights.Items.Add("VB101: New York to London - $450")
-            cboFlights.Items.Add("VB202: London to Paris - $220")
-            cboFlights.Items.Add("VB303: Paris to Rome - $185")
-            cboFlights.Items.Add("VB404: Rome to Madrid - $210")
-            cboFlights.Items.Add("VB505: Madrid to New York - $520")
-            cboFlights.Items.Add("VB606: Tokyo to Sydney - $650")
+        cboFlights.Width = 350
+        cboFlights.DropDownStyle = ComboBoxStyle.DropDownList
+        cboFlights.Items.Add("IQ101: New York to London - $450")
+        cboFlights.Items.Add("IQ202: London to Paris - $220")
+        cboFlights.Items.Add("IQ303: Paris to Rome - $185")
+        cboFlights.Items.Add("IQ404: Rome to Madrid - $210")
+        cboFlights.Items.Add("IQ505: Madrid to New York - $520")
+        cboFlights.Items.Add("IQ606: Tokyo to Sydney - $650")
             Me.Controls.Add(cboFlights)
 
             ' ---------- DATE SELECTION ----------
@@ -209,30 +209,25 @@
             Me.Controls.Add(btnClose)
             AddHandler btnClose.Click, AddressOf btnClose_Click
 
-        Catch ex As Exception
-            MessageBox.Show("Error initializing booking form: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
+
     End Sub
 
     ' Seat Map button click event
     Private Sub btnSeatMap_Click(sender As Object, e As EventArgs)
-        Try
-            MessageBox.Show("Seat Map would display here." & vbCrLf &
+
+        MessageBox.Show("Seat Map would display here." & vbCrLf &
                             "Available seats: 1A-5F (First Class)" & vbCrLf &
                             "6A-10F (Business)" & vbCrLf &
                             "11A-20F (Premium Economy)" & vbCrLf &
                             "21A-40F (Economy)",
                             "Seat Map", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        Catch ex As Exception
-            MessageBox.Show("Error displaying seat map: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
     End Sub
 
     ' Book button click event
     Private Sub btnBook_Click(sender As Object, e As EventArgs)
-        Try
-            ' Get controls safely
-            Dim cboFlights As ComboBox = DirectCast(Me.Controls("cboFlights"), ComboBox)
+
+        ' Get controls safely
+        Dim cboFlights As ComboBox = DirectCast(Me.Controls("cboFlights"), ComboBox)
             Dim dtpDate As DateTimePicker = DirectCast(Me.Controls("dtpDate"), DateTimePicker)
             Dim grpPassenger As GroupBox = DirectCast(Me.Controls("grpPassenger"), GroupBox)
             Dim grpSeat As GroupBox = DirectCast(Me.Controls("grpSeat"), GroupBox)
@@ -304,12 +299,8 @@
 
             MessageBox.Show(confirmationMessage, "Booking Confirmed", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-            ' Create a new form to display the booking receipt
-            ShowBookingReceipt(bookingRef, flight, travelDate, name, seatClass, seat, txtSpecialRequests.Text)
-
-        Catch ex As Exception
-            MessageBox.Show("Error processing booking: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
+        ' Create a new form to display the booking receipt
+        ShowBookingReceipt(bookingRef, flight, travelDate, name, seatClass, seat, txtSpecialRequests.Text)
     End Sub
 
     ' Email validation function
@@ -318,21 +309,18 @@
             Return False
         End If
 
-        Try
-            ' Simple email validation
-            Return email.Contains("@") AndAlso email.Contains(".")
-        Catch ex As Exception
-            Return False
-        End Try
+        ' Simple email validation
+        Return email.Contains("@") AndAlso email.Contains(".")
+
     End Function
 
     ' Show booking receipt in a new form
     Private Sub ShowBookingReceipt(bookingRef As String, flight As String, travelDate As String,
                                   name As String, seatClass As String, seat As String,
                                   specialRequests As String)
-        Try
-            ' Create receipt form
-            Dim frmReceipt As New Form()
+
+        ' Create receipt form
+        Dim frmReceipt As New Form()
             frmReceipt.Text = "Booking Receipt"
             frmReceipt.Width = 400
             frmReceipt.Height = 400
@@ -399,45 +387,40 @@
 
             ' Show the receipt form
             frmReceipt.ShowDialog()
-        Catch ex As Exception
-            MessageBox.Show("Error displaying receipt: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
+
     End Sub
 
     ' Clear button click event
     Private Sub btnClear_Click(sender As Object, e As EventArgs)
-        Try
-            ' Get controls safely
-            Dim cboFlights As ComboBox = DirectCast(Me.Controls("cboFlights"), ComboBox)
-            Dim dtpDate As DateTimePicker = DirectCast(Me.Controls("dtpDate"), DateTimePicker)
-            Dim grpPassenger As GroupBox = DirectCast(Me.Controls("grpPassenger"), GroupBox)
-            Dim grpSeat As GroupBox = DirectCast(Me.Controls("grpSeat"), GroupBox)
-            Dim txtSpecialRequests As TextBox = DirectCast(Me.Controls("txtSpecialRequests"), TextBox)
+        ' Get controls safely
+        Dim cboFlights As ComboBox = DirectCast(Me.Controls("cboFlights"), ComboBox)
+        Dim dtpDate As DateTimePicker = DirectCast(Me.Controls("dtpDate"), DateTimePicker)
+        Dim grpPassenger As GroupBox = DirectCast(Me.Controls("grpPassenger"), GroupBox)
+        Dim grpSeat As GroupBox = DirectCast(Me.Controls("grpSeat"), GroupBox)
+        Dim txtSpecialRequests As TextBox = DirectCast(Me.Controls("txtSpecialRequests"), TextBox)
 
-            ' Get passenger controls
-            Dim txtName As TextBox = DirectCast(grpPassenger.Controls("txtName"), TextBox)
-            Dim txtEmail As TextBox = DirectCast(grpPassenger.Controls("txtEmail"), TextBox)
-            Dim txtPhone As TextBox = DirectCast(grpPassenger.Controls("txtPhone"), TextBox)
+        ' Get passenger controls
+        Dim txtName As TextBox = DirectCast(grpPassenger.Controls("txtName"), TextBox)
+        Dim txtEmail As TextBox = DirectCast(grpPassenger.Controls("txtEmail"), TextBox)
+        Dim txtPhone As TextBox = DirectCast(grpPassenger.Controls("txtPhone"), TextBox)
 
-            ' Get seat controls
-            Dim cboClass As ComboBox = DirectCast(grpSeat.Controls("cboClass"), ComboBox)
-            Dim txtSeat As TextBox = DirectCast(grpSeat.Controls("txtSeat"), TextBox)
+        ' Get seat controls
+        Dim cboClass As ComboBox = DirectCast(grpSeat.Controls("cboClass"), ComboBox)
+        Dim txtSeat As TextBox = DirectCast(grpSeat.Controls("txtSeat"), TextBox)
 
-            ' Clear all fields
-            cboFlights.SelectedIndex = -1
-            dtpDate.Value = DateTime.Now.AddDays(1)
-            txtName.Text = ""
-            txtEmail.Text = ""
-            txtPhone.Text = ""
-            cboClass.SelectedIndex = 0
-            txtSeat.Text = ""
-            txtSpecialRequests.Text = ""
+        ' Clear all fields
+        cboFlights.SelectedIndex = -1
+        dtpDate.Value = DateTime.Now.AddDays(1)
+        txtName.Text = ""
+        txtEmail.Text = ""
+        txtPhone.Text = ""
+        cboClass.SelectedIndex = 0
+        txtSeat.Text = ""
+        txtSpecialRequests.Text = ""
 
-            ' Focus on first field
-            cboFlights.Focus()
-        Catch ex As Exception
-            MessageBox.Show("Error clearing form: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
+        ' Focus on first field
+        cboFlights.Focus()
+
     End Sub
 
     ' Close button click event

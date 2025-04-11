@@ -1,17 +1,18 @@
 ﻿Public Class Form1
     Private Sub frmIntro_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Form properties
-        Me.Text = "VB Airways Welcome"
+        Me.Text = "Iraqi Airways"
         Me.Width = 600
         Me.Height = 450
         Me.StartPosition = FormStartPosition.CenterScreen
         Me.FormBorderStyle = FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
-        Me.BackColor = Color.AliceBlue
 
-        ' Logo/Title
+
+        ' Logo/Titles
         Dim lblTitle As New Label()
-        lblTitle.Text = "WELCOME TO VB AIRWAYS"
+        lblTitle.Text = "WELCOME TO IRAQI AIRWAYS"
+
         lblTitle.Font = New Font("Arial", 20, FontStyle.Bold)
         lblTitle.TextAlign = ContentAlignment.MiddleCenter
         lblTitle.Location = New Point(0, 30)
@@ -90,12 +91,9 @@
 
     ' Booking Button Click Event
     Private Sub btnBooking_Click(sender As Object, e As EventArgs)
-        Try
-            Dim bookingForm As New Form2()
-            bookingForm.ShowDialog()
-        Catch ex As Exception
-            MessageBox.Show("Error opening booking form: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
+        Dim bookingForm As New Form2()
+        bookingForm.ShowDialog()
+
     End Sub
 
     ' Check Status Button Click Event
@@ -110,7 +108,7 @@
 
     ' Customer Support Button Click Event
     Private Sub btnSupport_Click(sender As Object, e As EventArgs)
-        MessageBox.Show("Customer Support: 1-800-VB-AIRWAYS" & vbCrLf & "Email: support@vbairways.example", "Customer Support", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        MessageBox.Show("Customer Support: +964-772-883-3423" & vbCrLf & "Email: support@iraqairways.gov", "Customer Support", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
     ' Exit Button Click Event
